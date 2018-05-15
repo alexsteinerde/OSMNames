@@ -1,7 +1,9 @@
 FROM golang:1.8
 
 RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main' >> /etc/apt/sources.list && \
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+    wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+RUN apt-key add ACCC4CF8.asc
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
