@@ -11,6 +11,9 @@ tables:
     - key: name:en
       name: name
       type: string
+    - key: name:de
+      name: name:de
+      type: string
     - key: null
       name: all_tags
       type: hstore_tags
@@ -74,6 +77,9 @@ tables:
     - key: name:en
       name: name
       type: string
+    - key: name:de
+      name: name:de
+      type: string
     - key: null
       name: all_tags
       type: hstore_tags
@@ -119,6 +125,9 @@ tables:
       type: mapping_value
     - key: name:en
       name: name
+      type: string
+    - key: name:de
+      name: name:de
       type: string
     - key: null
       name: all_tags
@@ -198,6 +207,9 @@ tables:
     - key: name:en
       name: name
       type: string
+    - key: name:de
+      name: name:de
+      type: string
     - key: type
       name: type
       type: string
@@ -224,6 +236,10 @@ tables:
       type: string
     - name: name
       key: name:en
+      type: string
+      from_member: true
+    - key: name:de
+      name: name:de
       type: string
       from_member: true
     mapping:
