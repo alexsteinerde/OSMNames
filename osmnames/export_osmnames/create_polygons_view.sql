@@ -2,7 +2,8 @@ DROP MATERIALIZED VIEW IF EXISTS mv_polygons;
 CREATE MATERIALIZED VIEW mv_polygons AS
 SELECT
   name,
-  alternative_names,
+  name_en
+  name_de,
   CASE WHEN osm_id > 0 THEN 'way' ELSE 'relation' END AS osm_type,
   abs(osm_id)::VARCHAR as osm_id,
   determine_class(type) AS class,
@@ -15,7 +16,8 @@ SELECT
   parentInfo.city AS city,
   parentInfo.county AS county,
   parentInfo.state AS state,
-  get_country_name(parentInfo.country_code) AS country,
+  get_country_name(parentInfo.country_code, 'en') AS country_en,
+  get_country_name(parentInfo.country_code, 'de') AS country_de,
   parentInfo.country_code AS country_code,
   parentInfo.displayName  AS display_name,
   bounding_box[1] AS west,

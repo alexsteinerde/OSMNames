@@ -2,6 +2,8 @@ DROP MATERIALIZED VIEW IF EXISTS mv_linestrings;
 CREATE MATERIALIZED VIEW mv_linestrings AS
 SELECT
   name,
+  name_en
+  name_de,
   alternative_names,
   'way'::TEXT as osm_type,
   osm_id::VARCHAR AS osm_id,
@@ -15,7 +17,8 @@ SELECT
   parentInfo.city AS city,
   parentInfo.county AS county,
   parentInfo.state AS state,
-  get_country_name(parentInfo.country_code) AS country,
+  get_country_name(parentInfo.country_code, 'en') AS country_en,
+  get_country_name(parentInfo.country_code, 'de') AS country_de,
   parentInfo.country_code AS country_code,
   parentInfo.displayName AS display_name,
   round(ST_XMIN(ST_Transform(geometry, 4326))::numeric, 7) AS west,

@@ -69,8 +69,9 @@ $$ LANGUAGE plpgsql IMMUTABLE;
 
 
 DROP FUNCTION IF EXISTS get_country_name(VARCHAR);
-CREATE FUNCTION get_country_name(country_code_in VARCHAR(2)) returns TEXT as $$
-  SELECT COALESCE(name -> 'name:en',
+CREATE FUNCTION get_country_name(country_code_in VARCHAR(2), lang VARCHAR(2)) returns TEXT as $$
+  SELECT COALESCE(name -> 'name:' + lang,
+                  name -> 'name:en',
                   name -> 'name',
                   name -> 'name:fr',
                   name -> 'name:de',
