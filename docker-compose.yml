@@ -5,10 +5,8 @@ services:
     volumes:
       - .:/osmnames
       - ./data:${DATA_DIR}
-      - /mnt/volume_sfo2_01/de/imposm:/tmp/imposm3
     depends_on:
       - "postgres-de"
-        #    tmpfs: /mnt/volume_sfo2_01
     links:
       - "postgres-de:postgres"
     env_file: .env
@@ -17,7 +15,3 @@ services:
     image: mdillon/postgis:10
     environment:
       - POSTGRES_PASSWORD
-        # ports:
-            # - "54330:5432"
-    volumes:
-      - /mnt/volume_sfo2_01/de/postgres:/var/lib/postgresql/data
