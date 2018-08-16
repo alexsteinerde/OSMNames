@@ -1,7 +1,6 @@
 DROP MATERIALIZED VIEW IF EXISTS mv_polygons;
 CREATE MATERIALIZED VIEW mv_polygons AS
 SELECT
-  name,
   name_en,
   name_de,
   CASE WHEN osm_id > 0 THEN 'way' ELSE 'relation' END AS osm_type,

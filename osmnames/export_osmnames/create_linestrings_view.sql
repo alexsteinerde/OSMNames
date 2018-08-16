@@ -1,7 +1,6 @@
 DROP MATERIALIZED VIEW IF EXISTS mv_linestrings;
 CREATE MATERIALIZED VIEW mv_linestrings AS
 SELECT
-  name,
   name_en,
   name_de,
   'way'::TEXT as osm_type,
