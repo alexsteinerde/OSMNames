@@ -14,7 +14,6 @@ SELECT
   get_country_name(parentInfo.country_code) AS country_en,
   get_country_name_de(parentInfo.country_code) AS country_de,
   parentInfo.country_code AS country_code,
-  parentInfo.displayName  AS display_name,
   bounding_box[1] AS west,
   bounding_box[2] AS south,
   bounding_box[3] AS east,
