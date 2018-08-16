@@ -18,7 +18,7 @@ SELECT
   round(ST_XMIN(ST_Transform(geometry, 4326))::numeric, 7) AS west,
   round(ST_YMIN(ST_Transform(geometry, 4326))::numeric, 7) AS south,
   round(ST_XMAX(ST_Transform(geometry, 4326))::numeric, 7) AS east,
-  round(ST_YMAX(ST_Transform(geometry, 4326))::numeric, 7) AS north,
+  round(ST_YMAX(ST_Transform(geometry, 4326))::numeric, 7) AS north
 FROM
   osm_point,
   get_parent_info(parent_id, name) as parentInfo

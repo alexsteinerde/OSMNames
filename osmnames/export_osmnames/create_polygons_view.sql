@@ -18,7 +18,7 @@ SELECT
   bounding_box[1] AS west,
   bounding_box[2] AS south,
   bounding_box[3] AS east,
-  bounding_box[4] AS north,
+  bounding_box[4] AS north
 FROM
   osm_polygon,
   get_parent_info(id, '') as parentInfo,
