@@ -24,9 +24,6 @@ SELECT
   bounding_box[2] AS south,
   bounding_box[3] AS east,
   bounding_box[4] AS north,
-  NULLIF(wikidata, '') AS wikidata,
-  NULLIF(wikipedia, '') AS wikipedia,
-  NULL::VARCHAR AS housenumbers
 FROM
   osm_polygon,
   get_parent_info(id, '') as parentInfo,
