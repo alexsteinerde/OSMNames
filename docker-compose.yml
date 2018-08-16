@@ -1,17 +1,20 @@
 version: '2'
 services:
-  osmnames-de:
+  osmnames:
     build: .
     volumes:
       - .:/osmnames
       - ./data:${DATA_DIR}
+      - /mnt/volume_fra1_01/imposm:/tmp/imposm3
     depends_on:
-      - "postgres-de"
+      - "postgres"
     links:
-      - "postgres-de:postgres"
+      - "postgres:postgres"
     env_file: .env
 
-  postgres-de:
+  postgres:
     image: mdillon/postgis:10
     environment:
       - POSTGRES_PASSWORD
+    volumes:
+      - /mnt/volume_fra1_01/postgres:/var/lib/postgresql/data
