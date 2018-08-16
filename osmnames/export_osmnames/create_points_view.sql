@@ -4,7 +4,6 @@ SELECT
   name,
   name_en,
   name_de,
-  alternative_names,
   'node'::TEXT as osm_type,
   osm_id::VARCHAR AS osm_id,
   determine_class(type) AS class,

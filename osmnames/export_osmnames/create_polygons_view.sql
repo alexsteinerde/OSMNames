@@ -4,7 +4,6 @@ SELECT
   name,
   name_en,
   name_de,
-  alternative_names,
   CASE WHEN osm_id > 0 THEN 'way' ELSE 'relation' END AS osm_type,
   abs(osm_id)::VARCHAR as osm_id,
   determine_class(type) AS class,

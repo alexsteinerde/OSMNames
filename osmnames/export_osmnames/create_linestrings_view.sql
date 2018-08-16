@@ -4,7 +4,6 @@ SELECT
   name,
   name_en,
   name_de,
-  alternative_names,
   'way'::TEXT as osm_type,
   osm_id::VARCHAR AS osm_id,
   class,
