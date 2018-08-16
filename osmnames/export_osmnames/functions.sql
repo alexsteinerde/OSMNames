@@ -69,16 +69,19 @@ $$ LANGUAGE plpgsql IMMUTABLE;
 
 
 DROP FUNCTION IF EXISTS get_country_name(VARCHAR);
-CREATE FUNCTION get_country_name(country_code_in VARCHAR(2), lang VARCHAR(2)) returns TEXT as $$
-  SELECT COALESCE(name -> 'name:' + lang,
-                  name -> 'name:en',
-                  name -> 'name',
-                  name -> 'name:fr',
-                  name -> 'name:de',
-                  name -> 'name:es',
-                  name -> 'name:ru',
-                  name -> 'name:zh')
-          FROM country_name WHERE country_code = country_code_in;
+CREATE FUNCTION get_country_name(country_code_in VARCHAR(2)) returns TEXT as $$
+       SELECT COALESCE(name -> 'name:en',
+                      name -> 'name',
+                      name -> 'name:de')
+                FROM country_name WHERE country_code = country_code_in;
+$$ LANGUAGE 'sql' IMMUTABLE;
+
+DROP FUNCTION IF EXISTS get_country_name_de(VARCHAR);
+CREATE FUNCTION get_country_name_de(country_code_in VARCHAR(2)) returns TEXT as $$
+    SELECT COALESCE(name -> 'name:de',
+                    name -> 'name',
+                    name -> 'name:en')
+              FROM country_name WHERE country_code = country_code_in;
 $$ LANGUAGE 'sql' IMMUTABLE;
 
 

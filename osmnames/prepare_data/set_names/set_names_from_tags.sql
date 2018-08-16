@@ -25,19 +25,17 @@ BEGIN
   END IF;
   name := regexp_replace(name, E'\\s+', ' ', 'g');
 
-  IS NOT FALSE THEN
-      SELECT COALESCE(
-                    all_tags -> 'name:de'.
-                    all_tags -> 'name:en',
-                    all_tags -> 'name')
-        INTO name_de;
+  SELECT COALESCE(
+                all_tags -> 'name:de',
+                all_tags -> 'name:en',
+                all_tags -> 'name')
+    INTO name_de;
   name_de := regexp_replace(name_de, E'\\s+', ' ', 'g');
 
-  IS NOT FALSE THEN
-      SELECT COALESCE(
-                    all_tags -> 'name:en',
-                    all_tags -> 'name')
-        INTO name_en;
+  SELECT COALESCE(
+                all_tags -> 'name:en',
+                all_tags -> 'name')
+    INTO name_en;
   name_en := regexp_replace(name_en, E'\\s+', ' ', 'g');
 
   alternative_names := array_remove(alternative_names, name);

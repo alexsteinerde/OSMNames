@@ -11,6 +11,8 @@ CREATE TABLE osm_merged_linestring AS
     min(a.osm_id) AS osm_id,
     string_agg(DISTINCT a.type,',') AS type,
     a.name,
+    a.name_en,
+    a.name_de,
     max(a.alternative_names) AS alternative_names,
     max(a.wikipedia) AS wikipedia,
     max(a.wikidata) AS wikidata,
@@ -28,7 +30,9 @@ CREATE TABLE osm_merged_linestring AS
     a.id != b.id
   GROUP BY
     a.parent_id,
-    a.name;
+    a.name,
+    a.name_en,
+    a.name_de;
 
 ALTER TABLE osm_merged_linestring ADD PRIMARY KEY (id);
 

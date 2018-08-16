@@ -2,7 +2,7 @@ DROP MATERIALIZED VIEW IF EXISTS mv_points;
 CREATE MATERIALIZED VIEW mv_points AS
 SELECT
   name,
-  name_en
+  name_en,
   name_de,
   alternative_names,
   'node'::TEXT as osm_type,
@@ -17,8 +17,8 @@ SELECT
   parentInfo.city AS city,
   parentInfo.county AS county,
   parentInfo.state AS state,
-  get_country_name(parentInfo.country_code, 'en') AS country_en,
-  get_country_name(parentInfo.country_code, 'de') AS country_de,
+  get_country_name(parentInfo.country_code) AS country_en,
+  get_country_name_de(parentInfo.country_code) AS country_de,
   parentInfo.country_code AS country_code,
   parentInfo.displayName AS display_name,
   round(ST_XMIN(ST_Transform(geometry, 4326))::numeric, 7) AS west,
